@@ -13,7 +13,8 @@ namespace ffmerge
         {            
             using (var tool = SHA1.Create())
             {
-                using (var stream = File.OpenRead(filename))
+                //using (var stream = File.OpenRead(filename))
+                using (var stream = new BufferedStream(File.OpenRead(filename), 1200000))
                 {
                     var hash = tool.ComputeHash(stream);
                     return BitConverter.ToString(hash).Replace("-", "").ToLowerInvariant();
@@ -46,8 +47,8 @@ namespace ffmerge
                 {         
                     try
                     {
-                        if (f.FullName.EndsWith(".svn-base"))
-                            continue;
+                        //if (f.FullName.EndsWith(".svn-base"))
+                        //    continue;
 
 
                         var h = ComputeHashMD5(f.FullName);
