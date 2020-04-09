@@ -47,8 +47,8 @@ namespace ffmerge
                 {         
                     try
                     {
-                        if (f.FullName.EndsWith(".svn-base"))
-                            continue;
+                        //if (f.FullName.EndsWith(".svn-base"))
+                        //    continue;
 
 
                         var h = ComputeHashMD5(f.FullName);
