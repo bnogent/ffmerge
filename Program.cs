@@ -49,6 +49,9 @@ namespace ffmerge
                     {
                         if (f.FullName.EndsWith(".svn-base"))
                             continue;
+						
+						if (f.FullName.Contains("deepzoom"))
+                            continue;
 
 
                         var h = ComputeHashMD5(f.FullName);
