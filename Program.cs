@@ -47,8 +47,8 @@ namespace ffmerge
                 {         
                     try
                     {
-                        //if (f.FullName.EndsWith(".svn-base"))
-                        //    continue;
+                        if (f.FullName.EndsWith(".svn-base"))
+                            continue;
 
 
                         var h = ComputeHashMD5(f.FullName);
@@ -72,14 +72,18 @@ namespace ffmerge
                             File.AppendAllLines(dbFile, enum1);
                             db.Add(h);
 
-                            if ((newFilesCount + existingFilesCount)%100==0)
-                                System.Console.WriteLine($"count={newFilesCount+existingFilesCount}, size={newFilesSize+existingFilesSize} => hash={h}, name={f.FullName}");
+                            
 
                         } else
                         {
                             existingFilesCount++;
                             existingFilesSize += f.Length;
-                        }                                               
+                        }
+
+                        if ((newFilesCount + existingFilesCount) % 100 == 0)
+                            System.Console.WriteLine($"count={newFilesCount + existingFilesCount}, size={newFilesSize + existingFilesSize} => hash={h}, name={f.FullName}");
+
+
                     }
                     catch 
                     {                        
