@@ -47,10 +47,13 @@ namespace ffmerge
                 {         
                     try
                     {
-                        if (f.FullName.EndsWith(".svn-base"))
+                        if (f.FullName.ToLower().EndsWith(".svn-base"))
                             continue;
 						
-						if (f.FullName.Contains("deepzoom"))
+						if (f.FullName.ToLower().Contains("deepzoom"))
+                            continue;
+
+                        if (f.FullName.ToLower().Contains("deep"))
                             continue;
 
 
